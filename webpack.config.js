@@ -1,12 +1,12 @@
 const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   mode: 'development',
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, '/dist'),
-    filename: 'bundle.js',
-    publicPath: ''
+    filename: 'bundle.js'
   },
   module: {
     rules: [
@@ -16,5 +16,11 @@ module.exports = {
         exclude: /node_modules/
       }
     ]
-  }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: 'src/index.html',
+      title: 'Webpack React sample'
+    })
+  ]
 }
